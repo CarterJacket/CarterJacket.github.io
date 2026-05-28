@@ -33,6 +33,13 @@
 html { scroll-behavior: smooth; }
 body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
 
+/* ── ICON SYSTEM ── */
+.icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.icon svg { display: block; }
+
 /* ── NAV ── */
 nav {
   position: sticky; top: 0; z-index: 100;
@@ -77,6 +84,23 @@ nav {
   background: radial-gradient(circle, rgba(196,101,42,0.07) 0%, transparent 65%);
   pointer-events: none;
 }
+.hero-photo {
+  width: 120px; height: 120px; border-radius: 50%;
+  border: 3px solid var(--border); margin-bottom: 1.5rem;
+  overflow: hidden; background: var(--bg-warm);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.hero-photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--accent-light), var(--purple-light));
+}
+.hero-photo-placeholder span {
+  font-family: var(--serif); font-size: 36px; color: var(--accent); opacity: 0.6;
+}
 .hero-eyebrow {
   font-size: 13px; font-weight: 600; text-transform: uppercase;
   letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1.5rem;
@@ -98,7 +122,7 @@ nav {
   font-size: 14px; color: var(--text-soft); margin-bottom: 2.5rem;
   display: flex; align-items: center; gap: 6px; justify-content: center;
 }
-.hero-location::before { content: '📍'; font-size: 13px; }
+.hero-location .icon { color: var(--accent); }
 .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 .btn-primary {
   background: var(--accent); color: white; padding: 14px 32px;
@@ -116,11 +140,13 @@ nav {
 .btn-ghost:hover { border-color: var(--text-muted); background: var(--bg-card); }
 .hero-scroll {
   position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
-  font-size: 12px; color: var(--text-soft); display: flex;
-  flex-direction: column; align-items: center; gap: 6px;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
   animation: pulse 2.5s infinite;
 }
+.hero-scroll span { font-size: 12px; color: var(--text-soft); }
 @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(3px)} }
+.hero-scroll .icon { animation: bounce 2s infinite; }
 
 /* ── SECTIONS ── */
 section { padding: 80px 2rem; }
@@ -150,11 +176,11 @@ section { padding: 80px 2rem; }
 .highlight-icon {
   width: 40px; height: 40px; border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
-  font-size: 18px; flex-shrink: 0;
+  flex-shrink: 0;
 }
-.hl-orange { background: var(--accent-light); }
-.hl-teal { background: var(--teal-light); }
-.hl-purple { background: var(--purple-light); }
+.hl-orange { background: var(--accent-light); color: var(--accent); }
+.hl-teal { background: var(--teal-light); color: var(--teal); }
+.hl-purple { background: var(--purple-light); color: var(--purple); }
 .highlight-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
 .highlight-card p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
 
@@ -190,11 +216,12 @@ section { padding: 80px 2rem; }
   padding-left: 1.25rem; position: relative;
 }
 .exp-bullets li::before {
-  content: '→'; position: absolute; left: 0;
-  color: var(--accent); font-size: 12px; top: 3px;
+  content: ''; position: absolute; left: 2px; top: 10px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); opacity: 0.4;
 }
-.exp-card.teal .exp-bullets li::before { color: var(--teal); }
-.exp-card.purple .exp-bullets li::before { color: var(--purple); }
+.exp-card.teal .exp-bullets li::before { background: var(--teal); }
+.exp-card.purple .exp-bullets li::before { background: var(--purple); }
 .exp-bullets li strong { color: var(--text); font-weight: 600; }
 .exp-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 1rem; }
 .exp-tag {
@@ -214,11 +241,12 @@ section { padding: 80px 2rem; }
   position: relative; overflow: hidden; transition: box-shadow 0.2s;
 }
 .project-featured:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
-.project-featured::after {
-  content: '★ Featured Project'; position: absolute; top: 1.25rem; right: 1.5rem;
+.featured-badge {
+  position: absolute; top: 1.25rem; right: 1.5rem;
   font-size: 11px; font-weight: 700; text-transform: uppercase;
   letter-spacing: 0.1em; color: var(--accent); background: var(--accent-light);
   padding: 4px 12px; border-radius: 20px;
+  display: flex; align-items: center; gap: 5px;
 }
 .project-featured-label {
   font-size: 12px; font-weight: 600; text-transform: uppercase;
@@ -236,19 +264,41 @@ section { padding: 80px 2rem; }
 .project-link-primary:hover { background: var(--accent-hover); }
 .project-link-ghost { border: 1.5px solid var(--border); color: var(--text-muted); }
 .project-link-ghost:hover { border-color: var(--text-muted); color: var(--text); }
+
 .project-preview {
-  background: var(--bg-warm); border-radius: var(--radius);
+  background: var(--bg); border-radius: var(--radius);
   aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
   border: 1px solid var(--border); overflow: hidden; position: relative;
 }
-.project-preview-inner {
-  text-align: center; padding: 1.5rem;
+.ss-preview-mockup {
+  width: 85%; padding: 1rem;
 }
-.project-preview-icon { font-size: 48px; margin-bottom: 0.75rem; }
-.project-preview-label {
-  font-family: var(--serif); font-size: 18px; color: var(--text-muted);
-  font-style: italic;
+.ss-mock-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 10px; background: rgba(255,255,255,0.9); border-radius: 6px 6px 0 0;
+  border-bottom: 1px solid var(--border);
 }
+.ss-mock-logo { font-family: var(--serif); font-size: 10px; color: var(--accent); }
+.ss-mock-dots { display: flex; gap: 3px; }
+.ss-mock-dots span { width: 5px; height: 5px; border-radius: 50%; background: var(--border); }
+.ss-mock-body {
+  background: white; border-radius: 0 0 6px 6px; padding: 12px;
+  min-height: 100px;
+}
+.ss-mock-heading {
+  font-family: var(--serif); font-size: 11px; text-align: center;
+  margin-bottom: 8px; color: var(--text);
+}
+.ss-mock-heading em { color: var(--accent); font-style: italic; }
+.ss-mock-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+.ss-mock-card {
+  height: 22px; border-radius: 3px; border: 1px solid var(--border);
+}
+.ss-mock-btn {
+  display: block; width: 50%; margin: 8px auto 0; height: 14px;
+  border-radius: 99px; background: var(--accent);
+}
+
 .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
 .project-tag {
   font-size: 11px; font-weight: 600; padding: 3px 10px;
@@ -265,7 +315,7 @@ section { padding: 80px 2rem; }
 .project-card-icon {
   width: 40px; height: 40px; border-radius: var(--radius-sm);
   display: flex; align-items: center; justify-content: center;
-  font-size: 20px; margin-bottom: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 .project-card h4 { font-size: 16px; font-weight: 600; line-height: 1.3; }
 .project-card .subtitle { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-soft); margin-bottom: 4px; }
@@ -287,7 +337,7 @@ section { padding: 80px 2rem; }
 }
 .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
 .skill-tag.strong { border-color: rgba(196,101,42,0.3); background: var(--accent-light); color: var(--accent); }
-.comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 2.5rem; }
+.comp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-top: 2.5rem; }
 .comp-card {
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 1.25rem; text-align: center;
@@ -324,7 +374,7 @@ footer a { color: var(--accent); text-decoration: none; }
   section { padding: 60px 1.25rem; }
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
   .project-featured { grid-template-columns: 1fr; }
-  .project-featured::after { display: none; }
+  .featured-badge { display: none; }
   .project-preview { display: none; }
   .project-grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
@@ -336,7 +386,7 @@ footer a { color: var(--accent); text-decoration: none; }
   .hero-actions a { text-align: center; }
   .exp-header { flex-direction: column; }
   .exp-meta { text-align: left; }
-  .comp-grid { grid-template-columns: 1fr; }
+  .comp-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -358,10 +408,16 @@ footer a { color: var(--accent); text-decoration: none; }
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-photo">
+    <div class="hero-photo-placeholder"><span>CJ</span></div>
+  </div>
   <div class="hero-eyebrow">Available for full-time roles</div>
   <h1>Carter<br><em>Jaquette</em></h1>
   <p class="hero-tagline">I turn data into decisions — and complex findings into stories that executives actually act on.</p>
-  <div class="hero-location">Bay Area, CA &nbsp;·&nbsp; Open to on-site, hybrid &amp; remote</div>
+  <div class="hero-location">
+    <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span>
+    Bay Area, CA &middot; Open to on-site, hybrid &amp; remote
+  </div>
   <div class="hero-actions">
     <a href="#projects" class="btn-primary">See my work</a>
     <a href="https://www.linkedin.com/in/carterjaquette/" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
@@ -369,7 +425,7 @@ footer a { color: var(--accent); text-decoration: none; }
   </div>
   <div class="hero-scroll">
     <span>Scroll</span>
-    <span>↓</span>
+    <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></span>
   </div>
 </section>
 
@@ -387,36 +443,44 @@ footer a { color: var(--accent); text-decoration: none; }
           On the technical side I'm comfortable across the full analytical stack: SQL, Python, R, Stata, Tableau, and Salesforce. On the communication side I've built executive dashboards tracking 25+ KPIs, written structured reports for academic and client audiences, and presented findings that helped a non-profit secure <strong>$150K in funding</strong>.
         </p>
         <p>
-          I'm looking for a role in <strong>tech consulting, strategy &amp; operations, or analytics</strong> where I can work across functions, dig into hard problems, and make the findings matter. Currently finishing my econometric thesis on EV tax policy and finishing a database migration engagement on the side.
+          I'm looking for a role in <strong>tech consulting, strategy &amp; operations, or analytics</strong> where I can work across functions, dig into hard problems, and make the findings matter.
         </p>
       </div>
       <div class="highlights">
         <div class="highlight-card">
-          <div class="highlight-icon hl-orange">🎓</div>
+          <div class="highlight-icon hl-orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"/></svg>
+          </div>
           <div>
-            <h4>UBC International Economics — 3.92 GPA</h4>
-            <p>Dean's List 2023 · Intel Inspires Award ($5,000 USD) · Graduating May 2026</p>
+            <h4>UBC International Economics &mdash; 3.92 GPA</h4>
+            <p>Dean's List 2023 &middot; Intel Inspires Award ($5,000 USD) &middot; Graduated May 2026</p>
           </div>
         </div>
         <div class="highlight-card">
-          <div class="highlight-icon hl-teal">🏆</div>
+          <div class="highlight-icon hl-teal">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 7 7 7 7"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 17 7 17 7"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          </div>
           <div>
-            <h4>Case competition record: 3 podium finishes</h4>
-            <p>1st/62 teams (CPABC) · 2nd/45 teams (Deloitte TechStrat) · 1st (Rise) · 3rd (EY/SCI)</p>
+            <h4>4 case competition podium finishes</h4>
+            <p>1st/62 teams (CPABC) &middot; 2nd/45 teams (Deloitte TechStrat) &middot; 1st (Rise) &middot; 3rd (EY/SCI)</p>
           </div>
         </div>
         <div class="highlight-card">
-          <div class="highlight-icon hl-purple">📊</div>
+          <div class="highlight-icon hl-purple">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17V13"/><path d="M12 17V8"/><path d="M17 17V11"/></svg>
+          </div>
           <div>
             <h4>2+ years at growth-stage tech companies</h4>
-            <p>Visier (HR analytics, ~1B valuation) · Premonio (Palo Alto) · real stakeholder impact</p>
+            <p>Visier (HR analytics) &middot; Premonio (Palo Alto) &middot; real stakeholder impact</p>
           </div>
         </div>
         <div class="highlight-card">
-          <div class="highlight-icon hl-orange">🛠️</div>
+          <div class="highlight-icon hl-orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
           <div>
             <h4>Builder, not just analyst</h4>
-            <p>Shipped a full career guidance platform end-to-end — product, data pipeline, and deployment</p>
+            <p>Shipped a full career guidance platform end-to-end &mdash; product, data pipeline, and deployment</p>
           </div>
         </div>
       </div>
@@ -487,7 +551,7 @@ footer a { color: var(--accent); text-decoration: none; }
             <div class="exp-role">Senior Analyst</div>
           </div>
           <div class="exp-meta">
-            <div class="exp-date">Sep 2025 – Present</div>
+            <div class="exp-date">Sep 2025 &ndash; May 2026</div>
             <div class="exp-location">Vancouver, BC</div>
           </div>
         </div>
@@ -511,12 +575,15 @@ footer a { color: var(--accent); text-decoration: none; }
   <div class="inner">
     <div class="section-eyebrow">Projects</div>
     <h2 class="section-title">Things I've built &amp; researched</h2>
-    <p class="section-sub">From deployed products to econometric research — work that spans technical depth and real-world application.</p>
+    <p class="section-sub">From deployed products to econometric research &mdash; work that spans technical depth and real-world application.</p>
 
-    <!-- Featured -->
     <div class="project-featured">
+      <div class="featured-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Featured
+      </div>
       <div>
-        <div class="project-featured-label">Full-stack product · Live</div>
+        <div class="project-featured-label">Full-stack product &middot; Live</div>
         <h3>Start Somewhere</h3>
         <div class="project-tags">
           <span class="project-tag">Product Design</span>
@@ -528,43 +595,65 @@ footer a { color: var(--accent); text-decoration: none; }
           A free career guidance platform for people who don't know where to start. Built end-to-end: designed the product, engineered a custom data pipeline from O*NET occupational data (the US government's workforce database), and shipped 10+ interactive tools including a skill explorer, career mapper, job analyzer, and gamified learning system.
         </p>
         <div class="project-featured-links">
-          <a href="https://carterjacket.github.io/start-somewhere/" target="_blank" rel="noopener" class="project-link project-link-primary">↗ Live site</a>
-          <a href="https://github.com/CarterJacket/start-somewhere" target="_blank" rel="noopener" class="project-link project-link-ghost">GitHub</a>
+          <a href="https://carterjacket.github.io/start-somewhere/" target="_blank" rel="noopener" class="project-link project-link-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            Live site
+          </a>
+          <a href="https://github.com/CarterJacket/start-somewhere" target="_blank" rel="noopener" class="project-link project-link-ghost">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
         </div>
       </div>
       <div class="project-preview">
-        <div class="project-preview-inner">
-          <div class="project-preview-icon">🗺️</div>
-          <div class="project-preview-label">Career guidance<br>platform</div>
+        <div class="ss-preview-mockup">
+          <div class="ss-mock-nav">
+            <div class="ss-mock-logo">Start Somewhere</div>
+            <div class="ss-mock-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="ss-mock-body">
+            <div class="ss-mock-heading">Don't know where to <em>start</em>?</div>
+            <div class="ss-mock-cards">
+              <div class="ss-mock-card" style="background:var(--accent-light)"></div>
+              <div class="ss-mock-card" style="background:var(--teal-light)"></div>
+              <div class="ss-mock-card" style="background:var(--purple-light)"></div>
+            </div>
+            <div class="ss-mock-btn"></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Grid -->
     <div class="project-grid">
 
       <div class="project-card">
-        <div class="project-card-icon hl-teal">📈</div>
-        <div class="subtitle">Econometric Research · Active</div>
+        <div class="project-card-icon hl-teal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="subtitle">Econometric Research &middot; Active</div>
         <h4>IRA EV Tax Rebate Thesis</h4>
         <p>Analyzing the causal effect of federal EV incentive policy on adoption rates. Built multi-source data pipelines in Stata and applied difference-in-differences modeling to isolate policy impact.</p>
-        <span class="project-card-tag tag-teal">Stata · DiD · Causal Inference</span>
+        <span class="project-card-tag tag-teal">Stata &middot; DiD &middot; Causal Inference</span>
       </div>
 
       <div class="project-card">
-        <div class="project-card-icon hl-purple">🤖</div>
-        <div class="subtitle">Machine Learning · Finance</div>
-        <h4>AI Ghost Jobs Detection Model</h4>
+        <div class="project-card-icon hl-purple">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.57-3.25 3.92"/><path d="M8.24 4.47A4 4 0 0 1 12 2"/><circle cx="12" cy="12" r="3"/><path d="M16 20a4 4 0 0 0-8 0"/><path d="M20 16.58A8 8 0 0 0 12 4"/><path d="M4 16.58A8 8 0 0 1 12 4"/></svg>
+        </div>
+        <div class="subtitle">Machine Learning &middot; Finance</div>
+        <h4>AI Ghost Jobs Detection</h4>
         <p>Unsupervised ML model to identify ghost job postings across public firms. Applied findings to inform potential trading strategies based on ghost job prevalence as a signal for firm behavior.</p>
-        <span class="project-card-tag tag-purple">Python · ML · Finance</span>
+        <span class="project-card-tag tag-purple">Python &middot; ML &middot; Finance</span>
       </div>
 
       <div class="project-card">
-        <div class="project-card-icon hl-orange">🗄️</div>
-        <div class="subtitle">Client Engagement · 2026</div>
+        <div class="project-card-icon hl-orange">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
+        </div>
+        <div class="subtitle">Client Engagement &middot; 2026</div>
         <h4>Database Migration &amp; Rebuild</h4>
         <p>Led a 2-week engagement to migrate a company's infrastructure to a new hosting provider. Rebuilt the database from scratch, ensuring data integrity, minimal downtime, and clean handoff.</p>
-        <span class="project-card-tag tag-orange">SQL · Infrastructure · Ops</span>
+        <span class="project-card-tag tag-orange">SQL &middot; Infrastructure &middot; Ops</span>
       </div>
 
     </div>
@@ -590,7 +679,7 @@ footer a { color: var(--accent); text-decoration: none; }
           <span class="skill-tag">Google Sheets</span>
           <span class="skill-tag">PowerPoint</span>
           <span class="skill-tag">Google Apps Script</span>
-          <span class="skill-tag">HTML/CSS/JS</span>
+          <span class="skill-tag">HTML / CSS / JS</span>
         </div>
       </div>
       <div class="skills-group">
@@ -632,11 +721,6 @@ footer a { color: var(--accent); text-decoration: none; }
           <div class="comp-name">EY / SCI Competition</div>
           <div class="comp-detail">Podium finish</div>
         </div>
-        <div class="comp-card">
-          <div class="comp-result">Top</div>
-          <div class="comp-name">CleanBC Competition</div>
-          <div class="comp-detail">Sustainability &amp; strategy</div>
-        </div>
       </div>
     </div>
   </div>
@@ -649,12 +733,21 @@ footer a { color: var(--accent); text-decoration: none; }
       <div class="section-eyebrow">Contact</div>
       <h2 class="section-title">Let's talk</h2>
       <p>
-        I'm actively looking for roles in tech consulting, strategy &amp; operations, and analytics in the Bay Area — on-site, hybrid, or remote. If you're working on something interesting, I'd love to hear about it.
+        I'm actively looking for roles in tech consulting, strategy &amp; operations, and analytics in the Bay Area &mdash; on-site, hybrid, or remote. If you're working on something interesting, I'd love to hear about it.
       </p>
       <div class="contact-links">
-        <a href="mailto:cejaquette@gmail.com" class="contact-link primary">✉ Email me</a>
-        <a href="https://www.linkedin.com/in/carterjaquette/" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
-        <a href="https://github.com/CarterJacket" target="_blank" rel="noopener" class="contact-link">GitHub</a>
+        <a href="mailto:cejaquette@gmail.com" class="contact-link primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+          Email me
+        </a>
+        <a href="https://www.linkedin.com/in/carterjaquette/" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/CarterJacket" target="_blank" rel="noopener" class="contact-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
       </div>
     </div>
   </div>
@@ -662,7 +755,7 @@ footer a { color: var(--accent); text-decoration: none; }
 
 <!-- FOOTER -->
 <footer>
-  <p>Built by Carter Jaquette · <a href="https://carterjacket.github.io/start-somewhere/">Start Somewhere</a> · <a href="https://github.com/CarterJacket">GitHub</a></p>
+  <p>Built by Carter Jaquette &middot; <a href="https://carterjacket.github.io/start-somewhere/">Start Somewhere</a> &middot; <a href="https://github.com/CarterJacket">GitHub</a></p>
 </footer>
 
 </body>
