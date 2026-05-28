@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI &amp; the Labor Market — A Data Story · Carter Jaquette</title>
-<meta name="description" content="An interactive analysis of how AI is reshaping tech layoffs, hiring, and job exposure — built by Carter Jaquette.">
+<title>AI &amp; the Labor Market: A Data Story · Carter Jaquette</title>
+<meta name="description" content="An interactive analysis of how AI is reshaping tech layoffs, hiring, and job exposure, built by Carter Jaquette using public data.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
@@ -38,7 +38,7 @@ a { color: inherit; }
 .icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .icon svg { display: block; }
 
-/* ── NAV ── */
+/* NAV */
 nav {
   position: sticky; top: 0; z-index: 100;
   background: rgba(250,249,246,0.95); backdrop-filter: blur(20px);
@@ -57,7 +57,7 @@ nav {
 .nav-logo { font-family: var(--serif); font-size: 22px; }
 .nav-logo span { color: var(--accent); }
 
-/* ── HERO ── */
+/* HERO */
 .hero { max-width: var(--max); margin: 0 auto; padding: 72px 24px 40px; }
 .eyebrow {
   font-size: 13px; font-weight: 600; text-transform: uppercase;
@@ -72,7 +72,7 @@ nav {
 .byline a { color: var(--accent); text-decoration: none; font-weight: 500; }
 .byline a:hover { text-decoration: underline; }
 
-/* ── KPI STRIP ── */
+/* KPI STRIP */
 .kpi-strip {
   max-width: var(--max); margin: 0 auto; padding: 0 24px 8px;
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
@@ -85,18 +85,18 @@ nav {
 .kpi.teal::before { background: var(--teal); }
 .kpi.purple::before { background: var(--purple); }
 .kpi.orange::before { background: var(--accent); }
-.kpi-value { font-family: var(--serif); font-size: 34px; line-height: 1; margin-bottom: 6px; }
+.kpi-value { font-family: var(--serif); font-size: 32px; line-height: 1; margin-bottom: 6px; }
 .kpi-value .unit { font-size: 18px; color: var(--text-soft); }
 .kpi-label { font-size: 12.5px; color: var(--text-muted); line-height: 1.4; }
 .kpi-sub { font-size: 11px; color: var(--text-soft); margin-top: 6px; }
 
-/* ── SECTIONS ── */
+/* SECTIONS */
 section.block { max-width: var(--max); margin: 0 auto; padding: 48px 24px 8px; }
 .block-eyebrow { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.6rem; }
 .block h2 { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 32px); line-height: 1.15; margin-bottom: 0.75rem; }
 .block .intro { font-size: 15px; color: var(--text-muted); max-width: 720px; margin-bottom: 1.75rem; }
 
-/* ── CHART CARD ── */
+/* CHART CARD */
 .chart-card {
   background: var(--bg-card); border: 1px solid var(--border);
   border-radius: var(--radius); padding: 24px;
@@ -104,11 +104,11 @@ section.block { max-width: var(--max); margin: 0 auto; padding: 48px 24px 8px; }
 .chart-card .chart-title { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
 .chart-card .chart-cap { font-size: 12.5px; color: var(--text-soft); margin-bottom: 18px; }
 .chart-wrap { position: relative; height: 340px; }
-.chart-wrap.tall { height: 400px; }
+.chart-wrap.tall { height: 420px; }
 
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; }
 
-/* ── INSIGHT CALLOUT ── */
+/* INSIGHT CALLOUT */
 .insight {
   background: var(--accent-light); border-radius: var(--radius);
   padding: 20px 22px; margin-top: 18px; font-size: 14.5px; color: #5a3a28;
@@ -120,7 +120,7 @@ section.block { max-width: var(--max); margin: 0 auto; padding: 48px 24px 8px; }
 .insight.purple { background: var(--purple-light); color: #3a3580; border-color: rgba(83,74,183,0.18); }
 .insight.purple strong { color: #534AB7; }
 
-/* ── TAKEAWAYS ── */
+/* TAKEAWAYS */
 .takeaways { background: var(--bg-warm); margin-top: 48px; padding-top: 48px; padding-bottom: 8px; }
 .takeaways-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 .tk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 1.5rem; }
@@ -131,14 +131,16 @@ section.block { max-width: var(--max); margin: 0 auto; padding: 48px 24px 8px; }
 .tk-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; line-height: 1.3; }
 .tk-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
 
-/* ── METHODOLOGY ── */
+/* METHODOLOGY */
 .method { max-width: var(--max); margin: 0 auto; padding: 48px 24px; }
 .method h3 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 14px; }
 .method p { font-size: 13px; color: var(--text-soft); max-width: 760px; margin-bottom: 10px; }
 .method ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
 .method li { font-size: 12px; color: var(--text-muted); background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; }
+.method a { color: var(--accent); text-decoration: none; }
+.method a:hover { text-decoration: underline; }
 
-/* ── FOOTER ── */
+/* FOOTER */
 footer { border-top: 1px solid var(--border); margin-top: 16px; }
 .footer-inner { max-width: var(--max); margin: 0 auto; padding: 36px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
 .footer-inner p { font-size: 13px; color: var(--text-soft); }
@@ -174,90 +176,90 @@ footer { border-top: 1px solid var(--border); margin-top: 16px; }
   <div class="eyebrow">Data Story &middot; Labor Markets</div>
   <h1>AI didn't <em>cause</em> the layoffs.<br>But it's rewriting <em>which jobs</em> come back.</h1>
   <p class="lede">
-    Between 2022 and 2025, the tech industry shed over half a million jobs. The headlines blamed AI &mdash; but the data tells a more interesting story about over-hiring, interest rates, and a structural shift in <em>what</em> companies hire for. Here's what the numbers actually say.
+    Between 2022 and 2025, the tech industry shed more than 700,000 jobs. The headlines blamed AI, but the data tells a more interesting story about over-hiring, interest rates, and a structural shift in <em>what</em> companies hire for. Here is what the public numbers actually say.
   </p>
-  <p class="byline">An independent analysis by <a href="index.html">Carter Jaquette</a> &middot; Last updated May 2026</p>
+  <p class="byline">An independent analysis by <a href="index.html">Carter Jaquette</a>, built on public data. Last updated May 2026.</p>
 </header>
 
 <!-- KPI STRIP -->
 <div class="kpi-strip">
   <div class="kpi orange">
-    <div class="kpi-value">~550<span class="unit">K</span></div>
-    <div class="kpi-label">Tech jobs cut, 2022&ndash;2025</div>
+    <div class="kpi-value">705<span class="unit">K</span></div>
+    <div class="kpi-label">Tech jobs cut, 2022 to 2025</div>
     <div class="kpi-sub">Source: Layoffs.fyi</div>
   </div>
   <div class="kpi teal">
-    <div class="kpi-value">+27<span class="unit">%</span></div>
-    <div class="kpi-label">Share of cuts now citing AI / "efficiency" restructuring</div>
-    <div class="kpi-sub">Up from ~5% in 2022 (est.)</div>
+    <div class="kpi-value">54,836</div>
+    <div class="kpi-label">2025 job cuts that named AI, about 5% of the US total</div>
+    <div class="kpi-sub">Source: Challenger, Gray &amp; Christmas</div>
   </div>
   <div class="kpi purple">
     <div class="kpi-value">19<span class="unit">%</span></div>
-    <div class="kpi-label">Of U.S. workers in jobs with high LLM task exposure</div>
+    <div class="kpi-label">Of US workers in roles where AI could do half their tasks</div>
     <div class="kpi-sub">Eloundou et al., 2023</div>
   </div>
   <div class="kpi orange">
-    <div class="kpi-value">83<span class="unit">M</span></div>
-    <div class="kpi-label">Roles projected displaced globally by 2027</div>
-    <div class="kpi-sub">WEF Future of Jobs, 2023</div>
+    <div class="kpi-value">18<span class="unit">%</span></div>
+    <div class="kpi-label">Of US firms now use AI, up from roughly 4% in early 2024</div>
+    <div class="kpi-sub">Census BTOS, year-end 2025</div>
   </div>
 </div>
 
-<!-- CHART 1: Layoffs over time -->
+<!-- CHART 1: Tech layoffs over time -->
 <section class="block">
   <div class="block-eyebrow">The Wave</div>
-  <h2>Tech layoffs spiked when rates rose &mdash; not when ChatGPT launched</h2>
+  <h2>Tech layoffs peaked in 2023, then fell as AI took off</h2>
   <p class="intro">
-    The largest cuts came in late 2022 and 2023, tracking the Fed's rate-hiking cycle and a pullback from pandemic-era over-hiring. ChatGPT launched in November 2022, but the AI narrative attached itself to a correction that was already underway.
+    The largest cuts landed in 2022 and 2023, tracking the Fed's rate-hiking cycle and a retreat from pandemic-era over-hiring. ChatGPT launched in November 2022, near the top of the wave, not the start of it. As AI adoption accelerated through 2024 and 2025, tech layoffs actually declined.
   </p>
   <div class="chart-card">
     <div class="chart-title">Tech-sector layoffs by year</div>
-    <div class="chart-cap">Number of employees laid off at tracked tech companies. 2025 is annualized from year-to-date.</div>
+    <div class="chart-cap">Employees laid off at tracked tech companies. Source: Layoffs.fyi.</div>
     <div class="chart-wrap"><canvas id="chartLayoffs"></canvas></div>
   </div>
   <div class="insight">
-    <strong>Analyst read:</strong> The peak predates broad AI adoption. The story isn't "robots took the jobs" &mdash; it's a capital-cost correction. AI's real fingerprint shows up later, in the <em>composition</em> of who gets rehired.
+    <strong>Analyst read:</strong> The peak predates broad AI deployment. This reads as a capital-cost correction, not an automation event. If AI were driving the cuts, you would expect the curve to climb as adoption rose. It did the opposite.
   </div>
 </section>
 
 <!-- CHART 2 + 3 side by side -->
 <section class="block">
   <div class="block-eyebrow">The Shift</div>
-  <h2>AI is becoming the stated reason &mdash; and exposure is uneven</h2>
+  <h2>Layoffs hit a post-2008 high in 2025, yet AI was named in only about 5%</h2>
   <p class="intro">
-    Two things are happening at once. Companies increasingly name AI and "efficiency" in their layoff rationale, and the jobs most exposed to large language models are concentrated in specific functions &mdash; not evenly spread across the workforce.
+    Across all industries, US employers announced 1.2 million job cuts in 2025, the most since 2020. Of those, 54,836 cited AI as the reason. AI is real and rising as a stated driver, but it is still a small slice of a much larger restructuring story. Where AI does bite is uneven: exposure concentrates in specific functions, not evenly across the workforce.
   </p>
   <div class="two-col">
     <div class="chart-card">
-      <div class="chart-title">Layoffs citing AI / efficiency restructuring</div>
-      <div class="chart-cap">Estimated share of layoff announcements naming automation or AI. Illustrative.</div>
-      <div class="chart-wrap"><canvas id="chartRationale"></canvas></div>
+      <div class="chart-title">US job cuts announced, all industries</div>
+      <div class="chart-cap">Total announced cuts per year. Source: Challenger, Gray &amp; Christmas.</div>
+      <div class="chart-wrap"><canvas id="chartCuts"></canvas></div>
     </div>
     <div class="chart-card">
-      <div class="chart-title">Job functions by AI task exposure</div>
-      <div class="chart-cap">Share of role's tasks materially augmentable by current LLMs.</div>
+      <div class="chart-title">AI task exposure by occupation</div>
+      <div class="chart-cap">Share of an occupation's tasks where LLMs could cut task time by half or more. Source: Eloundou et al., 2023.</div>
       <div class="chart-wrap"><canvas id="chartExposure"></canvas></div>
     </div>
   </div>
   <div class="insight teal">
-    <strong>Analyst read:</strong> Exposure ≠ elimination. The most-exposed functions (data entry, basic coding, content) are being <em>compressed</em>, not erased &mdash; one person now does the work of three. That's a productivity story with a headcount side effect.
+    <strong>Analyst read:</strong> Exposure is not the same as elimination. The most-exposed functions, like clerical, analytical, and writing work, are being compressed rather than erased. One person now does the work of several. That is a productivity story with a headcount side effect, concentrated far from the trades.
   </div>
 </section>
 
-<!-- CHART 4: Sector scatter -->
+<!-- CHART 4: Sector bubble -->
 <section class="block">
   <div class="block-eyebrow">The Map</div>
-  <h2>Where AI adoption meets workforce change</h2>
+  <h2>The sectors adopting AI fastest are the ones projected to grow</h2>
   <p class="intro">
-    Plotting sector AI adoption against net workforce change reveals the real divide. High-adoption, high-margin sectors are reshaping teams rather than shrinking them &mdash; while sectors automating routine work without new product lines are cutting hardest. Bubble size reflects relative sector employment.
+    Plotting each sector's AI adoption rate against its projected employment growth reveals the real divide. High-adoption sectors like information, finance, and professional services are also projected to keep hiring. The only sectors projected to shrink, retail and manufacturing, are among the lowest AI adopters. Bubble size reflects total employment in the sector.
   </p>
   <div class="chart-card">
-    <div class="chart-title">AI adoption vs. net workforce change by sector</div>
-    <div class="chart-cap">Each bubble is a sector. X = AI adoption intensity, Y = net headcount change (2023&ndash;2025). Illustrative positioning from public reporting.</div>
+    <div class="chart-title">AI adoption vs. projected employment growth, by sector</div>
+    <div class="chart-cap">X: AI adoption rate (Census BTOS). Y: projected annual employment change, 2023 to 2033 (BLS). Bubble size: sector employment (BLS).</div>
     <div class="chart-wrap tall"><canvas id="chartScatter"></canvas></div>
   </div>
   <div class="insight purple">
-    <strong>Analyst read:</strong> The winners aren't the ones cutting the most &mdash; they're the ones redeploying. The strategic question for any org isn't "how many can we cut," it's <em>"what new value can the same people now create?"</em>
+    <strong>Analyst read:</strong> If AI were a pure job destroyer, adoption and growth would move in opposite directions. They do not. The sectors leaning into AI are reshaping teams and still growing, while the shrinking sectors are losing jobs to e-commerce and offshoring, not to automation. The strategic question is not how many people to cut, it is what new value the same people can create.
   </div>
 </section>
 
@@ -266,22 +268,22 @@ footer { border-top: 1px solid var(--border); margin-top: 16px; }
   <div class="takeaways-inner">
     <div class="block-eyebrow">So What?</div>
     <h2 style="font-family:var(--serif); font-size:clamp(24px,3.5vw,32px); margin-bottom:0.5rem;">Three takeaways for operators</h2>
-    <p class="intro">If I were briefing a leadership team on this, here's where I'd land.</p>
+    <p class="intro">If I were briefing a leadership team on this, here is where I would land.</p>
     <div class="tk-grid">
       <div class="tk-card orange">
         <div class="tk-num">01</div>
-        <h4>Don't confuse correlation with cause</h4>
-        <p>The 2022&ndash;23 cuts were a rate-driven correction. Blaming AI obscures the real lesson: disciplined hiring beats boom-time over-hiring followed by painful resets.</p>
+        <h4>Do not confuse correlation with cause</h4>
+        <p>The 2022 and 2023 cuts were a rate-driven correction, and tech layoffs fell as AI adoption rose. Blaming AI obscures the real lesson: disciplined hiring beats boom-time over-hiring followed by painful resets.</p>
       </div>
       <div class="tk-card teal">
         <div class="tk-num">02</div>
         <h4>Plan for compression, not elimination</h4>
-        <p>AI rarely deletes a whole role &mdash; it raises the output per person. The teams that win redesign workflows around that leverage instead of just trimming headcount.</p>
+        <p>AI rarely deletes a whole role. It raises the output per person in exposed functions. The teams that win redesign workflows around that leverage instead of just trimming headcount.</p>
       </div>
       <div class="tk-card purple">
         <div class="tk-num">03</div>
-        <h4>Redeployment is the strategy</h4>
-        <p>The sectors growing through AI are reallocating talent to higher-value work. The competitive edge is reskilling speed, not cut depth.</p>
+        <h4>Adoption tracks growth, so redeploy</h4>
+        <p>The sectors adopting AI fastest are still projected to hire. The competitive edge is reskilling speed and moving talent to higher-value work, not cut depth.</p>
       </div>
     </div>
   </div>
@@ -291,14 +293,14 @@ footer { border-top: 1px solid var(--border); margin-top: 16px; }
 <div class="method">
   <h3>Methodology &amp; sources</h3>
   <p>
-    This is an independent analysis built to demonstrate data storytelling and structured thinking &mdash; not a forecast. Headline figures (layoff counts, exposure shares, displacement projections) are drawn from the public sources below. Where a chart shows directional trends that aren't published as a single clean series &mdash; like the AI/efficiency share of layoff rationale or sector bubble positioning &mdash; values are clearly labeled as illustrative estimates synthesized from reporting, used to communicate the shape of the trend rather than precise magnitudes.
+    This is an independent analysis built to demonstrate data storytelling and structured thinking, not a forecast. Every charted figure comes from the public sources below. Tech layoff counts are from Layoffs.fyi. Total US job cuts and AI-attributed cuts are from the Challenger, Gray &amp; Christmas monthly reports. Occupational AI exposure uses the task-level measures from Eloundou, Manning, Mishkin, and Rock (2023). Sector AI adoption rates are from the US Census Bureau Business Trends and Outlook Survey, and projected employment growth and sector size are from the BLS Employment Projections, 2023 to 2033. Where a single clean series was not published at the sector level, values reflect the most recent figures reported by those sources.
   </p>
   <ul>
-    <li>Layoffs.fyi &mdash; tech layoff tracker</li>
-    <li>Challenger, Gray &amp; Christmas &mdash; job-cut reports</li>
-    <li>WEF Future of Jobs Report 2023</li>
-    <li>Eloundou, Manning, Mishkin &amp; Rock (2023) &mdash; "GPTs are GPTs"</li>
-    <li>U.S. Bureau of Labor Statistics</li>
+    <li><a href="https://layoffs.fyi/" target="_blank" rel="noopener">Layoffs.fyi</a></li>
+    <li><a href="https://www.challengergray.com/blog/category/job-cuts-report/" target="_blank" rel="noopener">Challenger, Gray &amp; Christmas</a></li>
+    <li><a href="https://arxiv.org/abs/2303.10130" target="_blank" rel="noopener">Eloundou et al. (2023), GPTs are GPTs</a></li>
+    <li><a href="https://www.census.gov/programs-surveys/btos.html" target="_blank" rel="noopener">Census Bureau BTOS</a></li>
+    <li><a href="https://www.bls.gov/emp/" target="_blank" rel="noopener">BLS Employment Projections</a></li>
     <li>Charts: Chart.js</li>
   </ul>
 </div>
@@ -315,7 +317,6 @@ footer { border-top: 1px solid var(--border); margin-top: 16px; }
 </footer>
 
 <script>
-// ── Shared Chart.js defaults ──
 Chart.defaults.font.family = "'DM Sans', sans-serif";
 Chart.defaults.font.size = 12.5;
 Chart.defaults.color = '#6B6860';
@@ -331,14 +332,14 @@ const tooltipStyle = {
   titleFont: { weight: '600', size: 13 }, bodyFont: { size: 12.5 }
 };
 
-// ── CHART 1: Layoffs over time (line) ──
+// CHART 1: Tech layoffs by year (Layoffs.fyi)
 new Chart(document.getElementById('chartLayoffs'), {
   type: 'line',
   data: {
-    labels: ['2020', '2021', '2022', '2023', '2024', '2025*'],
+    labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
     datasets: [{
       label: 'Employees laid off',
-      data: [80000, 15000, 165000, 264000, 152000, 130000],
+      data: [80998, 15823, 165269, 264220, 152922, 122549],
       borderColor: C.accent, backgroundColor: C.accentSoft,
       borderWidth: 3, fill: true, tension: 0.35,
       pointBackgroundColor: C.accent, pointBorderColor: '#fff',
@@ -349,59 +350,58 @@ new Chart(document.getElementById('chartLayoffs'), {
     responsive: true, maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
-      tooltip: { ...tooltipStyle, callbacks: {
-        label: (c) => c.parsed.y.toLocaleString() + ' jobs cut'
-      }}
+      tooltip: { ...tooltipStyle, callbacks: { label: (c) => c.parsed.y.toLocaleString() + ' jobs cut' } }
     },
     scales: {
-      y: { grid: { color: C.grid }, border: { display: false },
-        ticks: { callback: (v) => (v/1000) + 'K' } },
+      y: { grid: { color: C.grid }, border: { display: false }, ticks: { callback: (v) => (v/1000) + 'K' } },
       x: { grid: { display: false }, border: { display: false } }
     }
   }
 });
 
-// ── CHART 2: AI rationale share (bar) ──
-new Chart(document.getElementById('chartRationale'), {
+// CHART 2: Total US job cuts by year (Challenger)
+new Chart(document.getElementById('chartCuts'), {
   type: 'bar',
   data: {
-    labels: ['2022', '2023', '2024', '2025'],
+    labels: ['2021', '2022', '2023', '2024', '2025'],
     datasets: [{
-      label: '% citing AI / efficiency',
-      data: [5, 11, 19, 27],
-      backgroundColor: [C.tealSoft, C.tealSoft, C.teal, C.teal],
-      borderColor: C.teal, borderWidth: 1.5, borderRadius: 6, maxBarThickness: 64
+      label: 'Announced job cuts',
+      data: [321970, 363824, 721677, 761358, 1206374],
+      backgroundColor: [C.accentSoft, C.accentSoft, 'rgba(196,101,42,0.45)', 'rgba(196,101,42,0.45)', C.accent],
+      borderColor: C.accent, borderWidth: 1.5, borderRadius: 6, maxBarThickness: 48
     }]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
       legend: { display: false },
-      tooltip: { ...tooltipStyle, callbacks: { label: (c) => c.parsed.y + '% of announcements' } }
+      tooltip: { ...tooltipStyle, callbacks: {
+        label: (c) => c.parsed.y.toLocaleString() + ' cuts',
+        afterLabel: (c) => c.label === '2025' ? '54,836 named AI (about 5%)' : ''
+      }}
     },
     scales: {
-      y: { grid: { color: C.grid }, border: { display: false }, beginAtZero: true,
-        ticks: { callback: (v) => v + '%' }, max: 35 },
+      y: { grid: { color: C.grid }, border: { display: false }, beginAtZero: true, ticks: { callback: (v) => (v/1000000).toFixed(1) + 'M' } },
       x: { grid: { display: false }, border: { display: false } }
     }
   }
 });
 
-// ── CHART 3: Job function exposure (horizontal bar) ──
+// CHART 3: AI task exposure by occupation (Eloundou et al.)
 new Chart(document.getElementById('chartExposure'), {
   type: 'bar',
   data: {
-    labels: ['Data entry / admin', 'Customer support', 'Software (junior)', 'Content / marketing', 'Finance / analysis', 'Sales', 'Operations', 'Skilled trades'],
+    labels: ['Tax preparers', 'Accountants & auditors', 'Writers & PR', 'Customer support', 'Financial analysts', 'Web developers', 'Sales reps', 'Registered nurses', 'Skilled trades'],
     datasets: [{
       label: 'Task exposure to LLMs',
-      data: [78, 64, 58, 52, 41, 33, 28, 9],
+      data: [100, 100, 82, 76, 66, 58, 40, 14, 4],
       backgroundColor: (ctx) => {
         const v = ctx.raw;
-        if (v >= 55) return C.accent;
+        if (v >= 60) return C.accent;
         if (v >= 35) return 'rgba(196,101,42,0.55)';
         return 'rgba(196,101,42,0.28)';
       },
-      borderRadius: 5, maxBarThickness: 26
+      borderRadius: 5, maxBarThickness: 24
     }]
   },
   options: {
@@ -412,50 +412,57 @@ new Chart(document.getElementById('chartExposure'), {
       tooltip: { ...tooltipStyle, callbacks: { label: (c) => c.parsed.x + '% of tasks exposed' } }
     },
     scales: {
-      x: { grid: { color: C.grid }, border: { display: false }, beginAtZero: true, max: 100,
-        ticks: { callback: (v) => v + '%' } },
-      y: { grid: { display: false }, border: { display: false }, ticks: { font: { size: 11.5 } } }
+      x: { grid: { color: C.grid }, border: { display: false }, beginAtZero: true, max: 100, ticks: { callback: (v) => v + '%' } },
+      y: { grid: { display: false }, border: { display: false }, ticks: { font: { size: 11 } } }
     }
   }
 });
 
-// ── CHART 4: Sector scatter (bubble) ──
+// CHART 4: Sector bubble (Census BTOS adoption x BLS growth, size = employment)
+// Expanded qualitative palette: one distinct color per sector, used only in this chart.
 const sectors = [
-  { s: 'Software / SaaS',     x: 82, y: 8,   r: 26, c: C.teal },
-  { s: 'Finance',            x: 68, y: 4,   r: 22, c: C.teal },
-  { s: 'Media / Content',    x: 71, y: -14, r: 18, c: C.accent },
-  { s: 'Retail / E-comm',    x: 54, y: -9,  r: 24, c: C.accent },
-  { s: 'Manufacturing',      x: 38, y: -3,  r: 28, c: C.purple },
-  { s: 'Healthcare',         x: 31, y: 12,  r: 30, c: C.teal },
-  { s: 'Customer Service',   x: 74, y: -22, r: 20, c: C.accent },
-  { s: 'Logistics',          x: 47, y: 2,   r: 22, c: C.purple }
+  { s: 'Information',                 x: 38, y: 0.7,  emp: 3.0,  c: '#C4652A' },
+  { s: 'Finance & insurance',        x: 31, y: 0.3,  emp: 6.7,  c: '#2E7DA8' },
+  { s: 'Professional & technical',   x: 33, y: 0.9,  emp: 10.5, c: '#1D9E75' },
+  { s: 'Real estate',                x: 24, y: 0.4,  emp: 2.4,  c: '#B14D8E' },
+  { s: 'Educational services',       x: 14, y: 0.5,  emp: 3.8,  c: '#E0A82E' },
+  { s: 'Health care & social',       x: 12, y: 1.0,  emp: 22.0, c: '#534AB7' },
+  { s: 'Wholesale trade',            x: 13, y: 0.1,  emp: 6.1,  c: '#6E9F3C' },
+  { s: 'Accommodation & food',       x: 8,  y: 0.5,  emp: 12.5, c: '#46B1A8' },
+  { s: 'Manufacturing',              x: 10, y: -0.1, emp: 12.9, c: '#9A6A3C' },
+  { s: 'Retail trade',               x: 11, y: -0.2, emp: 15.6, c: '#C0392B' }
 ];
-function bubbleColor(hex, a){ const n=parseInt(hex.slice(1),16); return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`; }
+function rgba(hex, a){ const n = parseInt(hex.slice(1),16); return `rgba(${(n>>16)&255},${(n>>8)&255},${n&255},${a})`; }
+function bubbleR(emp){ return 8 + Math.sqrt(emp) * 4; }
 new Chart(document.getElementById('chartScatter'), {
   type: 'bubble',
   data: {
     datasets: sectors.map(d => ({
       label: d.s,
-      data: [{ x: d.x, y: d.y, r: d.r }],
-      backgroundColor: bubbleColor(d.c, 0.5),
+      data: [{ x: d.x, y: d.y, r: bubbleR(d.emp), emp: d.emp }],
+      backgroundColor: rgba(d.c, 0.5),
       borderColor: d.c, borderWidth: 1.5
     }))
   },
   options: {
     responsive: true, maintainAspectRatio: false,
     plugins: {
-      legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10, usePointStyle: true, pointStyle: 'circle', padding: 14, font: { size: 11.5 } } },
+      legend: { position: 'bottom', labels: { boxWidth: 10, boxHeight: 10, usePointStyle: true, pointStyle: 'circle', padding: 12, font: { size: 11 } } },
       tooltip: { ...tooltipStyle, callbacks: {
         title: (items) => items[0].dataset.label,
-        label: (c) => [`AI adoption: ${c.parsed.x}/100`, `Workforce change: ${c.parsed.y > 0 ? '+' : ''}${c.parsed.y}%`]
+        label: (c) => [
+          'AI adoption: ' + c.parsed.x + '%',
+          'Projected growth: ' + (c.parsed.y > 0 ? '+' : '') + c.parsed.y + '%/yr',
+          'Employment: ' + c.raw.emp + 'M'
+        ]
       }}
     },
     scales: {
-      x: { title: { display: true, text: 'AI adoption intensity →', color: C.muted, font: { size: 12 } },
-        grid: { color: C.grid }, border: { display: false }, min: 20, max: 95 },
-      y: { title: { display: true, text: 'Net workforce change (%)', color: C.muted, font: { size: 12 } },
-        grid: { color: C.grid }, border: { display: false }, min: -30, max: 20,
-        ticks: { callback: (v) => (v > 0 ? '+' : '') + v + '%' } }
+      x: { title: { display: true, text: 'AI adoption rate', color: C.muted, font: { size: 12 } },
+        grid: { color: C.grid }, border: { display: false }, min: 0, max: 45, ticks: { callback: (v) => v + '%' } },
+      y: { title: { display: true, text: 'Projected annual employment growth', color: C.muted, font: { size: 12 } },
+        grid: { color: C.grid }, border: { display: false }, min: -0.5, max: 1.3,
+        ticks: { stepSize: 0.25, callback: (v) => { const r = Math.round(v * 100) / 100; return (r > 0 ? '+' : '') + r + '%'; } } }
     }
   }
 });
