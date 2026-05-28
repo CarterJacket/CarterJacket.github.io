@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carter Jaquette — Portfolio</title>
+<meta name="description" content="Carter Jaquette — Economist, data analyst, and builder. Open to tech consulting, strategy, and analytics roles in the Bay Area.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF9F6;
+  --bg-warm: #F5F0E8;
+  --bg-card: #FFFFFF;
+  --text: #1A1A18;
+  --text-muted: #6B6860;
+  --text-soft: #918E85;
+  --accent: #C4652A;
+  --accent-light: #FAECE7;
+  --accent-hover: #A8521F;
+  --teal: #1D9E75;
+  --teal-light: #E1F5EE;
+  --purple: #534AB7;
+  --purple-light: #EEEDFE;
+  --border: rgba(0,0,0,0.08);
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', -apple-system, sans-serif;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --max: 960px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,249,246,0.95); backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 2rem;
+}
+.nav-logo {
+  font-family: var(--serif); font-size: 22px; color: var(--text);
+  text-decoration: none; letter-spacing: -0.01em;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 2rem; align-items: center; }
+.nav-links a {
+  font-size: 14px; font-weight: 500; color: var(--text-muted);
+  text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--accent); color: #fff; border: none;
+  padding: 8px 20px; border-radius: 999px; font-size: 13px;
+  font-weight: 600; cursor: pointer; font-family: var(--sans);
+  text-decoration: none; transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--accent-hover); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 92vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 80px 2rem 60px;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; left: 50%;
+  transform: translateX(-50%); width: 900px; height: 900px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,101,42,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 13px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: ''; width: 28px; height: 1px; background: var(--accent); opacity: 0.5;
+}
+.hero h1 {
+  font-family: var(--serif); font-size: clamp(44px, 7vw, 80px);
+  line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.25rem;
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-tagline {
+  font-size: clamp(17px, 2.5vw, 21px); color: var(--text-muted);
+  max-width: 560px; line-height: 1.6; margin-bottom: 0.75rem;
+}
+.hero-location {
+  font-size: 14px; color: var(--text-soft); margin-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 6px; justify-content: center;
+}
+.hero-location::before { content: '📍'; font-size: 13px; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.btn-primary {
+  background: var(--accent); color: white; padding: 14px 32px;
+  border-radius: 999px; font-size: 15px; font-weight: 600;
+  text-decoration: none; transition: all 0.2s; border: none;
+  font-family: var(--sans); cursor: pointer;
+}
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent; color: var(--text);
+  border: 1.5px solid var(--border); padding: 14px 32px;
+  border-radius: 999px; font-size: 15px; font-weight: 500;
+  text-decoration: none; transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: var(--text-muted); background: var(--bg-card); }
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  font-size: 12px; color: var(--text-soft); display: flex;
+  flex-direction: column; align-items: center; gap: 6px;
+  animation: pulse 2.5s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* ── SECTIONS ── */
+section { padding: 80px 2rem; }
+.inner { max-width: var(--max); margin: 0 auto; }
+.section-eyebrow {
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.75rem;
+}
+.section-title {
+  font-family: var(--serif); font-size: clamp(28px, 4vw, 38px);
+  line-height: 1.15; margin-bottom: 1rem;
+}
+.section-sub { font-size: 16px; color: var(--text-muted); max-width: 560px; line-height: 1.65; }
+
+/* ── ABOUT ── */
+.about { background: var(--bg-warm); }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.5rem; align-items: start; }
+.about-text p { font-size: 16px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem; }
+.about-text p:last-child { margin-bottom: 0; }
+.about-text strong { color: var(--text); font-weight: 600; }
+.highlights { display: flex; flex-direction: column; gap: 1rem; }
+.highlight-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.25rem 1.5rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.highlight-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.hl-orange { background: var(--accent-light); }
+.hl-teal { background: var(--teal-light); }
+.hl-purple { background: var(--purple-light); }
+.highlight-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+.highlight-card p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+
+/* ── EXPERIENCE ── */
+.exp-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.exp-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.75rem 2rem;
+  position: relative; overflow: hidden; transition: box-shadow 0.2s;
+}
+.exp-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.06); }
+.exp-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; border-radius: 3px 0 0 3px;
+}
+.exp-card.orange::before { background: var(--accent); }
+.exp-card.teal::before { background: var(--teal); }
+.exp-card.purple::before { background: var(--purple); }
+.exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem; }
+.exp-company { font-family: var(--serif); font-size: 20px; }
+.exp-meta { text-align: right; }
+.exp-date { font-size: 13px; color: var(--text-soft); font-weight: 500; }
+.exp-location { font-size: 12px; color: var(--text-soft); }
+.exp-role {
+  font-size: 14px; font-weight: 600; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 1rem;
+}
+.exp-card.teal .exp-role { color: var(--teal); }
+.exp-card.purple .exp-role { color: var(--purple); }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.exp-bullets li {
+  font-size: 14px; color: var(--text-muted); line-height: 1.6;
+  padding-left: 1.25rem; position: relative;
+}
+.exp-bullets li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--accent); font-size: 12px; top: 3px;
+}
+.exp-card.teal .exp-bullets li::before { color: var(--teal); }
+.exp-card.purple .exp-bullets li::before { color: var(--purple); }
+.exp-bullets li strong { color: var(--text); font-weight: 600; }
+.exp-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 1rem; }
+.exp-tag {
+  font-size: 11px; font-weight: 600; padding: 3px 10px;
+  border-radius: 20px; text-transform: uppercase; letter-spacing: 0.06em;
+}
+.tag-orange { background: var(--accent-light); color: var(--accent); }
+.tag-teal { background: var(--teal-light); color: var(--teal); }
+.tag-purple { background: var(--purple-light); color: var(--purple); }
+
+/* ── PROJECTS ── */
+.projects { background: var(--bg-warm); }
+.project-featured {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 2.5rem; margin-top: 2.5rem; margin-bottom: 1.25rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;
+  position: relative; overflow: hidden; transition: box-shadow 0.2s;
+}
+.project-featured:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.07); }
+.project-featured::after {
+  content: '★ Featured Project'; position: absolute; top: 1.25rem; right: 1.5rem;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.1em; color: var(--accent); background: var(--accent-light);
+  padding: 4px 12px; border-radius: 20px;
+}
+.project-featured-label {
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.75rem;
+}
+.project-featured h3 { font-family: var(--serif); font-size: 30px; line-height: 1.15; margin-bottom: 1rem; }
+.project-featured p { font-size: 15px; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.25rem; }
+.project-featured-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.project-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; text-decoration: none;
+  padding: 8px 18px; border-radius: 999px; transition: all 0.2s;
+}
+.project-link-primary { background: var(--accent); color: white; }
+.project-link-primary:hover { background: var(--accent-hover); }
+.project-link-ghost { border: 1.5px solid var(--border); color: var(--text-muted); }
+.project-link-ghost:hover { border-color: var(--text-muted); color: var(--text); }
+.project-preview {
+  background: var(--bg-warm); border-radius: var(--radius);
+  aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--border); overflow: hidden; position: relative;
+}
+.project-preview-inner {
+  text-align: center; padding: 1.5rem;
+}
+.project-preview-icon { font-size: 48px; margin-bottom: 0.75rem; }
+.project-preview-label {
+  font-family: var(--serif); font-size: 18px; color: var(--text-muted);
+  font-style: italic;
+}
+.project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.project-tag {
+  font-size: 11px; font-weight: 600; padding: 3px 10px;
+  border-radius: 20px; background: var(--accent-light); color: var(--accent);
+}
+.project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.project-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem;
+  display: flex; flex-direction: column; gap: 0.5rem;
+  transition: all 0.2s;
+}
+.project-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.05); }
+.project-card-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 0.25rem;
+}
+.project-card h4 { font-size: 16px; font-weight: 600; line-height: 1.3; }
+.project-card .subtitle { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-soft); margin-bottom: 4px; }
+.project-card p { font-size: 13px; color: var(--text-muted); line-height: 1.55; flex: 1; }
+.project-card-tag {
+  display: inline-block; font-size: 11px; font-weight: 600; padding: 3px 10px;
+  border-radius: 20px; margin-top: 0.5rem; align-self: flex-start;
+}
+
+/* ── SKILLS ── */
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2.5rem; }
+.skills-group { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.75rem; }
+.skills-group h3 { font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-soft); margin-bottom: 1.25rem; }
+.skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-tag {
+  font-size: 13px; font-weight: 500; padding: 6px 14px;
+  border-radius: 999px; border: 1.5px solid var(--border);
+  background: var(--bg); color: var(--text); transition: all 0.15s;
+}
+.skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+.skill-tag.strong { border-color: rgba(196,101,42,0.3); background: var(--accent-light); color: var(--accent); }
+.comp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 2.5rem; }
+.comp-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.25rem; text-align: center;
+}
+.comp-result { font-family: var(--serif); font-size: 24px; color: var(--accent); margin-bottom: 4px; }
+.comp-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.comp-detail { font-size: 12px; color: var(--text-soft); }
+
+/* ── CONTACT ── */
+.contact { background: var(--bg-warm); }
+.contact-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+.contact-inner .section-title { margin-bottom: 1rem; }
+.contact-inner p { font-size: 16px; color: var(--text-muted); line-height: 1.65; margin-bottom: 2rem; }
+.contact-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.contact-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  padding: 12px 24px; border-radius: 999px;
+  border: 1.5px solid var(--border); color: var(--text);
+  background: var(--bg-card); transition: all 0.2s;
+}
+.contact-link:hover { border-color: var(--accent); color: var(--accent); }
+.contact-link.primary { background: var(--accent); color: white; border-color: var(--accent); }
+.contact-link.primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: white; }
+
+/* ── FOOTER ── */
+footer { padding: 2.5rem 2rem; text-align: center; border-top: 1px solid var(--border); }
+footer p { font-size: 13px; color: var(--text-soft); }
+footer a { color: var(--accent); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  section { padding: 60px 1.25rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .project-featured { grid-template-columns: 1fr; }
+  .project-featured::after { display: none; }
+  .project-preview { display: none; }
+  .project-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .comp-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: 38px; }
+  .hero-actions { flex-direction: column; width: 100%; }
+  .hero-actions a { text-align: center; }
+  .exp-header { flex-direction: column; }
+  .exp-meta { text-align: left; }
+  .comp-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">C<span>J</span></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact" class="nav-cta">Get in touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Available for full-time roles</div>
+  <h1>Carter<br><em>Jaquette</em></h1>
+  <p class="hero-tagline">I turn data into decisions — and complex findings into stories that executives actually act on.</p>
+  <div class="hero-location">Bay Area, CA &nbsp;·&nbsp; Open to on-site, hybrid &amp; remote</div>
+  <div class="hero-actions">
+    <a href="#projects" class="btn-primary">See my work</a>
+    <a href="https://www.linkedin.com/in/carterjaquette/" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
+    <a href="#contact" class="btn-ghost">Get in touch</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <span>↓</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="inner">
+    <div class="section-eyebrow">About</div>
+    <h2 class="section-title">Economist. Analyst. Builder.</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          I'm a recent UBC International Economics grad who sits at the intersection of <strong>rigorous analysis and clear communication</strong>. For the past two years I've helped growth-stage tech companies — Visier and Premonio — turn complex datasets into the kind of decision-ready insights that senior leaders actually use. That means designing the right analytical framework, doing the work, and translating it into a narrative that drives action.
+        </p>
+        <p>
+          On the technical side I'm comfortable across the full analytical stack: SQL, Python, R, Stata, Tableau, and Salesforce. On the communication side I've built executive dashboards tracking 25+ KPIs, written structured reports for academic and client audiences, and presented findings that helped a non-profit secure <strong>$150K in funding</strong>.
+        </p>
+        <p>
+          I'm looking for a role in <strong>tech consulting, strategy &amp; operations, or analytics</strong> where I can work across functions, dig into hard problems, and make the findings matter. Currently finishing my econometric thesis on EV tax policy and finishing a database migration engagement on the side.
+        </p>
+      </div>
+      <div class="highlights">
+        <div class="highlight-card">
+          <div class="highlight-icon hl-orange">🎓</div>
+          <div>
+            <h4>UBC International Economics — 3.92 GPA</h4>
+            <p>Dean's List 2023 · Intel Inspires Award ($5,000 USD) · Graduating May 2026</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon hl-teal">🏆</div>
+          <div>
+            <h4>Case competition record: 3 podium finishes</h4>
+            <p>1st/62 teams (CPABC) · 2nd/45 teams (Deloitte TechStrat) · 1st (Rise) · 3rd (EY/SCI)</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon hl-purple">📊</div>
+          <div>
+            <h4>2+ years at growth-stage tech companies</h4>
+            <p>Visier (HR analytics, ~1B valuation) · Premonio (Palo Alto) · real stakeholder impact</p>
+          </div>
+        </div>
+        <div class="highlight-card">
+          <div class="highlight-icon hl-orange">🛠️</div>
+          <div>
+            <h4>Builder, not just analyst</h4>
+            <p>Shipped a full career guidance platform end-to-end — product, data pipeline, and deployment</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="inner">
+    <div class="section-eyebrow">Experience</div>
+    <h2 class="section-title">Where I've worked</h2>
+    <p class="section-sub">Two summers at high-growth tech companies plus hands-on consulting work with real clients.</p>
+    <div class="exp-list">
+
+      <div class="exp-card orange">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Visier</div>
+            <div class="exp-role">Salesforce Administrator &amp; RevOps Intern</div>
+          </div>
+          <div class="exp-meta">
+            <div class="exp-date">Summers 2024 &amp; 2025</div>
+            <div class="exp-location">Vancouver, BC</div>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Partnered with senior leaders across sales, marketing, and operations to design <strong>5 executive-facing dashboards tracking 25+ KPIs</strong>, used weekly to drive strategic decisions.</li>
+          <li>Translated raw operational and sales data into <strong>decision-ready narratives for leadership business reviews</strong>, distilling complex performance trends into clear takeaways and specific recommendations.</li>
+          <li>Authored process documentation and analytical guides that improved team-wide data literacy and <strong>reduced dependency on ad-hoc analysis requests</strong>.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag tag-orange">Salesforce</span>
+          <span class="exp-tag tag-orange">RevOps</span>
+          <span class="exp-tag tag-orange">Data Storytelling</span>
+          <span class="exp-tag tag-orange">Executive Dashboards</span>
+        </div>
+      </div>
+
+      <div class="exp-card teal">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">Premonio</div>
+            <div class="exp-role">Operations Data Scientist</div>
+          </div>
+          <div class="exp-meta">
+            <div class="exp-date">Summer 2023 &amp; Spring 2025</div>
+            <div class="exp-location">Palo Alto, CA</div>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Built an automated funnel analysis system in Google Apps Script and SQL that tracked conversion rates across pipeline stages, <strong>eliminating ~90% of manual reporting effort</strong> for internal teams and 3 external clients.</li>
+          <li>Designed and maintained data pipelines joining Salesforce, Google Sheets, and SQL sources, implementing <strong>validation logic and quality controls</strong> to improve downstream data reliability.</li>
+          <li>Analyzed 200,000+ record datasets using SQL, Excel, and Google Sheets to surface insights informing <strong>strategic planning and marketing decisions</strong>.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag tag-teal">SQL</span>
+          <span class="exp-tag tag-teal">Data Pipelines</span>
+          <span class="exp-tag tag-teal">Funnel Analysis</span>
+          <span class="exp-tag tag-teal">Google Apps Script</span>
+        </div>
+      </div>
+
+      <div class="exp-card purple">
+        <div class="exp-header">
+          <div>
+            <div class="exp-company">UBC Strategy Consulting Initiative</div>
+            <div class="exp-role">Senior Analyst</div>
+          </div>
+          <div class="exp-meta">
+            <div class="exp-date">Sep 2025 – Present</div>
+            <div class="exp-location">Vancouver, BC</div>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Designed and presented analytical recommendations for real client engagements, including a <strong>case for support that helped a non-profit secure $150K in funding</strong>.</li>
+          <li>Translated research and data findings into <strong>leadership-ready presentations</strong>, ensuring complex findings are communicated in plain language with clear implications and next steps.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="exp-tag tag-purple">Client Consulting</span>
+          <span class="exp-tag tag-purple">Stakeholder Presentations</span>
+          <span class="exp-tag tag-purple">Research</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="inner">
+    <div class="section-eyebrow">Projects</div>
+    <h2 class="section-title">Things I've built &amp; researched</h2>
+    <p class="section-sub">From deployed products to econometric research — work that spans technical depth and real-world application.</p>
+
+    <!-- Featured -->
+    <div class="project-featured">
+      <div>
+        <div class="project-featured-label">Full-stack product · Live</div>
+        <h3>Start Somewhere</h3>
+        <div class="project-tags">
+          <span class="project-tag">Product Design</span>
+          <span class="project-tag">Data Pipeline</span>
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">O*NET Data</span>
+        </div>
+        <p>
+          A free career guidance platform for people who don't know where to start. Built end-to-end: designed the product, engineered a custom data pipeline from O*NET occupational data (the US government's workforce database), and shipped 10+ interactive tools including a skill explorer, career mapper, job analyzer, and gamified learning system.
+        </p>
+        <div class="project-featured-links">
+          <a href="https://carterjacket.github.io/start-somewhere/" target="_blank" rel="noopener" class="project-link project-link-primary">↗ Live site</a>
+          <a href="https://github.com/CarterJacket/start-somewhere" target="_blank" rel="noopener" class="project-link project-link-ghost">GitHub</a>
+        </div>
+      </div>
+      <div class="project-preview">
+        <div class="project-preview-inner">
+          <div class="project-preview-icon">🗺️</div>
+          <div class="project-preview-label">Career guidance<br>platform</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="project-grid">
+
+      <div class="project-card">
+        <div class="project-card-icon hl-teal">📈</div>
+        <div class="subtitle">Econometric Research · Active</div>
+        <h4>IRA EV Tax Rebate Thesis</h4>
+        <p>Analyzing the causal effect of federal EV incentive policy on adoption rates. Built multi-source data pipelines in Stata and applied difference-in-differences modeling to isolate policy impact.</p>
+        <span class="project-card-tag tag-teal">Stata · DiD · Causal Inference</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-icon hl-purple">🤖</div>
+        <div class="subtitle">Machine Learning · Finance</div>
+        <h4>AI Ghost Jobs Detection Model</h4>
+        <p>Unsupervised ML model to identify ghost job postings across public firms. Applied findings to inform potential trading strategies based on ghost job prevalence as a signal for firm behavior.</p>
+        <span class="project-card-tag tag-purple">Python · ML · Finance</span>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-icon hl-orange">🗄️</div>
+        <div class="subtitle">Client Engagement · 2026</div>
+        <h4>Database Migration &amp; Rebuild</h4>
+        <p>Led a 2-week engagement to migrate a company's infrastructure to a new hosting provider. Rebuilt the database from scratch, ensuring data integrity, minimal downtime, and clean handoff.</p>
+        <span class="project-card-tag tag-orange">SQL · Infrastructure · Ops</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="inner">
+    <div class="section-eyebrow">Skills</div>
+    <h2 class="section-title">What I work with</h2>
+    <div class="skills-grid">
+      <div class="skills-group">
+        <h3>Technical Stack</h3>
+        <div class="skill-tags">
+          <span class="skill-tag strong">SQL</span>
+          <span class="skill-tag strong">Python</span>
+          <span class="skill-tag strong">R</span>
+          <span class="skill-tag strong">Tableau</span>
+          <span class="skill-tag strong">Salesforce</span>
+          <span class="skill-tag">Stata</span>
+          <span class="skill-tag">Excel</span>
+          <span class="skill-tag">Google Sheets</span>
+          <span class="skill-tag">PowerPoint</span>
+          <span class="skill-tag">Google Apps Script</span>
+          <span class="skill-tag">HTML/CSS/JS</span>
+        </div>
+      </div>
+      <div class="skills-group">
+        <h3>Analytical Methods</h3>
+        <div class="skill-tags">
+          <span class="skill-tag strong">Regression Analysis</span>
+          <span class="skill-tag strong">Difference-in-Differences</span>
+          <span class="skill-tag strong">Funnel Analysis</span>
+          <span class="skill-tag strong">A/B Testing</span>
+          <span class="skill-tag">Causal Inference</span>
+          <span class="skill-tag">Forecasting</span>
+          <span class="skill-tag">Descriptive Statistics</span>
+          <span class="skill-tag">Unsupervised ML</span>
+          <span class="skill-tag">Data Storytelling</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 3rem;">
+      <div class="section-eyebrow" style="margin-bottom:1rem;">Case Competitions</div>
+      <div class="comp-grid">
+        <div class="comp-card">
+          <div class="comp-result">1st</div>
+          <div class="comp-name">CPABC Case Competition</div>
+          <div class="comp-detail">out of 62 teams</div>
+        </div>
+        <div class="comp-card">
+          <div class="comp-result">2nd</div>
+          <div class="comp-name">Deloitte / BizTech TechStrat</div>
+          <div class="comp-detail">out of 45 teams</div>
+        </div>
+        <div class="comp-card">
+          <div class="comp-result">1st</div>
+          <div class="comp-name">Rise Case Competition</div>
+          <div class="comp-detail">Podium finish</div>
+        </div>
+        <div class="comp-card">
+          <div class="comp-result">3rd</div>
+          <div class="comp-name">EY / SCI Competition</div>
+          <div class="comp-detail">Podium finish</div>
+        </div>
+        <div class="comp-card">
+          <div class="comp-result">Top</div>
+          <div class="comp-name">CleanBC Competition</div>
+          <div class="comp-detail">Sustainability &amp; strategy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="inner">
+    <div class="contact-inner">
+      <div class="section-eyebrow">Contact</div>
+      <h2 class="section-title">Let's talk</h2>
+      <p>
+        I'm actively looking for roles in tech consulting, strategy &amp; operations, and analytics in the Bay Area — on-site, hybrid, or remote. If you're working on something interesting, I'd love to hear about it.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:cejaquette@gmail.com" class="contact-link primary">✉ Email me</a>
+        <a href="https://www.linkedin.com/in/carterjaquette/" target="_blank" rel="noopener" class="contact-link">LinkedIn</a>
+        <a href="https://github.com/CarterJacket" target="_blank" rel="noopener" class="contact-link">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Built by Carter Jaquette · <a href="https://carterjacket.github.io/start-somewhere/">Start Somewhere</a> · <a href="https://github.com/CarterJacket">GitHub</a></p>
+</footer>
+
+</body>
+</html>
