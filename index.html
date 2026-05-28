@@ -299,6 +299,21 @@ section { padding: 80px 2rem; }
   border-radius: 99px; background: var(--accent);
 }
 
+/* analytics dashboard mockup preview */
+.dash-mock { width: 88%; padding: 0.5rem; }
+.dash-mock-bars { display: flex; align-items: flex-end; gap: 7px; height: 86px; padding: 12px 12px 10px; background: white; border-radius: 6px 6px 0 0; border: 1px solid var(--border); border-bottom: none; }
+.dash-mock-bars span { flex: 1; border-radius: 3px 3px 0 0; background: var(--accent); opacity: 0.85; }
+.dash-mock-bars span:nth-child(1) { height: 40%; }
+.dash-mock-bars span:nth-child(2) { height: 22%; }
+.dash-mock-bars span:nth-child(3) { height: 70%; background: var(--teal); }
+.dash-mock-bars span:nth-child(4) { height: 95%; background: var(--teal); }
+.dash-mock-bars span:nth-child(5) { height: 60%; }
+.dash-mock-bars span:nth-child(6) { height: 52%; }
+.dash-mock-foot { display: flex; gap: 6px; padding: 10px 12px; background: white; border-radius: 0 0 6px 6px; border: 1px solid var(--border); border-top: none; }
+.dash-mock-kpi { flex: 1; height: 24px; border-radius: 4px; background: var(--bg-warm); }
+.dash-mock-kpi:nth-child(2) { background: var(--accent-light); }
+.dash-mock-kpi:nth-child(3) { background: var(--purple-light); }
+
 .project-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 1.25rem; }
 .project-tag {
   font-size: 11px; font-weight: 600; padding: 3px 10px;
@@ -620,6 +635,38 @@ footer a { color: var(--accent); text-decoration: none; }
             </div>
             <div class="ss-mock-btn"></div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-featured">
+      <div class="featured-badge">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-5"/></svg>
+        Interactive
+      </div>
+      <div>
+        <div class="project-featured-label">Data analysis &middot; Live</div>
+        <h3>AI &amp; the Labor Market</h3>
+        <div class="project-tags">
+          <span class="project-tag">Data Storytelling</span>
+          <span class="project-tag">Chart.js</span>
+          <span class="project-tag">Labor Economics</span>
+          <span class="project-tag">Consulting Lens</span>
+        </div>
+        <p>
+          An interactive data story unpacking what the "AI killed the jobs" headlines get wrong. Four live charts trace tech layoffs against the rate cycle, map AI task exposure by job function, and plot adoption vs. workforce change by sector &mdash; ending in three operator takeaways. Built to show how I turn messy public data into a clear executive narrative.
+        </p>
+        <div class="project-featured-links">
+          <a href="ai-layoffs.html" class="project-link project-link-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            View dashboard
+          </a>
+        </div>
+      </div>
+      <div class="project-preview">
+        <div class="dash-mock">
+          <div class="dash-mock-bars"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="dash-mock-foot"><div class="dash-mock-kpi"></div><div class="dash-mock-kpi"></div><div class="dash-mock-kpi"></div></div>
         </div>
       </div>
     </div>
