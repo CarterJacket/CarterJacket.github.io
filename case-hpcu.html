@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core Banking Modernization: Harbour Pacific · Carter Jaquette</title>
+<meta name="description" content="A consulting case study on modernizing a credit union's 33-year-old COBOL core banking system, by Carter Jaquette.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #FAF9F6; --bg-warm: #F5F0E8; --bg-card: #FFFFFF;
+  --text: #1A1A18; --text-muted: #6B6860; --text-soft: #918E85;
+  --accent: #C4652A; --accent-light: #FAECE7; --accent-hover: #A8521F;
+  --teal: #1D9E75; --teal-light: #E1F5EE; --purple: #534AB7; --purple-light: #EEEDFE;
+  --border: rgba(0,0,0,0.08);
+  --serif: 'DM Serif Display', Georgia, serif; --sans: 'DM Sans', -apple-system, sans-serif;
+  --radius: 12px; --radius-sm: 8px; --max: 1040px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(250,249,246,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); }
+.nav-inner { max-width: var(--max); margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; }
+.nav-back { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+.nav-back:hover { color: var(--accent); }
+.nav-logo { font-family: var(--serif); font-size: 22px; text-decoration: none; }
+.nav-logo span { color: var(--accent); }
+.hero { max-width: var(--max); margin: 0 auto; padding: 72px 24px 40px; }
+.eyebrow { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 1.25rem; display: inline-flex; align-items: center; gap: 10px; }
+.eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--accent); opacity: 0.5; }
+.hero h1 { font-family: var(--serif); font-size: clamp(34px, 5.5vw, 56px); line-height: 1.08; letter-spacing: -0.01em; margin-bottom: 1.25rem; }
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero .lede { font-size: clamp(16px, 2.2vw, 19px); color: var(--text-muted); max-width: 720px; }
+.byline { margin-top: 1.5rem; font-size: 14px; color: var(--text-soft); border-top: 1px solid var(--border); padding-top: 1.25rem; max-width: 720px; }
+.byline strong { color: var(--text-muted); font-weight: 600; }
+.kpi-strip { max-width: var(--max); margin: 0 auto; padding: 0 24px 8px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.kpi { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px 20px; position: relative; overflow: hidden; }
+.kpi::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--accent); }
+.kpi.teal::before { background: var(--teal); }
+.kpi.purple::before { background: var(--purple); }
+.kpi-value { font-family: var(--serif); font-size: 30px; line-height: 1; margin-bottom: 6px; }
+.kpi-value .unit { font-size: 17px; color: var(--text-soft); }
+.kpi-label { font-size: 12.5px; color: var(--text-muted); line-height: 1.4; }
+section.block { max-width: var(--max); margin: 0 auto; padding: 48px 24px 8px; }
+.block-eyebrow { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.6rem; }
+.block h2 { font-family: var(--serif); font-size: clamp(24px, 3.5vw, 32px); line-height: 1.15; margin-bottom: 0.75rem; }
+.block .intro { font-size: 15.5px; color: var(--text-muted); max-width: 760px; margin-bottom: 1.5rem; }
+.block p.body { font-size: 15px; color: var(--text-muted); max-width: 760px; margin-bottom: 1rem; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.card h4 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+.card ul { list-style: none; }
+.card li { font-size: 14px; color: var(--text-muted); padding-left: 20px; position: relative; margin-bottom: 8px; line-height: 1.55; }
+.card li::before { content: ''; position: absolute; left: 2px; top: 9px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.card.teal li::before { background: var(--teal); }
+.card.purple li::before { background: var(--purple); }
+.kq { max-width: var(--max); margin: 40px auto 0; padding: 0 24px; }
+.kq-inner { background: var(--text); color: #fff; border-radius: var(--radius); padding: 32px 34px; }
+.kq-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; color: #d9a884; margin-bottom: 12px; }
+.kq-inner p { font-family: var(--serif); font-size: clamp(20px, 2.8vw, 26px); line-height: 1.3; }
+.matrix-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); background: var(--bg-card); }
+table.matrix { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 640px; }
+table.matrix th, table.matrix td { text-align: left; padding: 13px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+table.matrix thead th { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-soft); font-weight: 600; background: var(--bg-warm); }
+table.matrix td.opt { font-weight: 600; color: var(--text); white-space: nowrap; }
+table.matrix tr.rec { background: var(--accent-light); }
+table.matrix tr.rec td.opt { color: var(--accent-hover); }
+.rec-tag { display: inline-block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: #fff; background: var(--accent); border-radius: 5px; padding: 2px 7px; margin-left: 8px; vertical-align: middle; }
+.insight { background: var(--accent-light); border-radius: var(--radius); padding: 20px 22px; margin-top: 18px; font-size: 14.5px; color: #5a3a28; border: 1px solid rgba(196,101,42,0.15); }
+.insight strong { color: var(--accent-hover); }
+.insight.teal { background: var(--teal-light); color: #1a5a44; border-color: rgba(29,158,117,0.18); }
+.insight.teal strong { color: #157a5a; }
+.reco-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 0.5rem; }
+.reco-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 26px; position: relative; }
+.reco-num { font-family: var(--serif); font-size: 15px; color: #fff; background: var(--accent); min-width: 34px; height: 34px; padding: 0 10px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.reco-card h4 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.reco-card .tag { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--accent); margin-bottom: 12px; }
+.reco-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 0; }
+.takeaways { background: var(--bg-warm); margin-top: 48px; padding: 48px 0 8px; }
+.takeaways-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+.tk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 1.5rem; }
+.tk-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.tk-num { font-family: var(--serif); font-size: 28px; color: var(--accent); line-height: 1; margin-bottom: 12px; }
+.tk-card.teal .tk-num { color: var(--teal); }
+.tk-card.purple .tk-num { color: var(--purple); }
+.tk-card h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; line-height: 1.3; }
+.tk-card p { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; }
+.risk { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; margin-bottom: 12px; }
+.risk .r-head { font-size: 14px; font-weight: 600; }
+.risk .r-head span { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #c0392b; margin-bottom: 4px; }
+.risk .r-mit { font-size: 14px; color: var(--text-muted); }
+.risk .r-mit span { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal); margin-bottom: 4px; }
+.method { max-width: var(--max); margin: 0 auto; padding: 44px 24px; }
+.method h3 { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 12px; }
+.method p { font-size: 12.5px; color: var(--text-soft); max-width: 760px; margin-bottom: 8px; }
+.method ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.method li { font-size: 12px; color: var(--text-muted); background: var(--bg-card); border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; }
+footer { border-top: 1px solid var(--border); }
+.footer-inner { max-width: var(--max); margin: 0 auto; padding: 36px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-inner p { font-size: 13px; color: var(--text-soft); }
+.footer-inner a { color: var(--accent); text-decoration: none; font-weight: 500; }
+.footer-links { display: flex; gap: 18px; font-size: 13px; }
+.footer-links a { color: var(--text-muted); text-decoration: none; }
+.footer-links a:hover { color: var(--accent); }
+@media (max-width: 820px) {
+  .kpi-strip { grid-template-columns: repeat(2, 1fr); }
+  .two-col, .risk { grid-template-columns: 1fr; }
+  .reco-grid, .tk-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) { .kpi-strip { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-back" href="index.html#case-studies">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Back to portfolio
+    </a>
+    <a class="nav-logo" href="index.html"><span>C</span>J</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">TechStrat 2026 Finals &middot; Technology Strategy</div>
+  <h1>Rebuilding the core,<br>without breaking the <em>bank</em></h1>
+  <p class="lede">
+    Harbour Pacific Credit Union runs $4.6B in assets on a 1991 COBOL core that processes everything overnight in batch. Maintenance climbs 12% a year, four developers stand between the bank and a crisis, and younger members are quietly leaving for fintechs. The mandate: modernize the core without losing the staff, the regulator, or the members along the way.
+  </p>
+  <p class="byline"><strong>Role:</strong> Strategy and analysis, team of three. <strong>Team:</strong> JACS Of All Trades, with Samantha Ng and Jenise Yang. <strong>Format:</strong> TechStrat 2026 final round, March 2026.</p>
+</header>
+
+<div class="kpi-strip">
+  <div class="kpi">
+    <div class="kpi-value">$4.6<span class="unit">B</span></div>
+    <div class="kpi-label">Assets across 148,000 members and 9,400 businesses</div>
+  </div>
+  <div class="kpi purple">
+    <div class="kpi-value">1991</div>
+    <div class="kpi-label">Year the COBOL core was installed, batch-only since</div>
+  </div>
+  <div class="kpi teal">
+    <div class="kpi-value">$4.9<span class="unit">M</span>/yr</div>
+    <div class="kpi-label">Maintenance cost, growing 12% annually with no endpoint</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-value">30 to 40%</div>
+    <div class="kpi-label">Permanent OpEx reduction the recommended path delivers</div>
+  </div>
+</div>
+
+<!-- SITUATION -->
+<section class="block">
+  <div class="block-eyebrow">Situation</div>
+  <h2>A trusted institution with a hidden liability</h2>
+  <p class="intro">
+    Harbour Pacific is financially strong and community-rooted: $4.6B in assets, 148,000 members, 9,400 business clients, and $2.8M in annual donations. Its values center on member trust and stewardship, and its balance sheet can comfortably fund a large project with heavy upfront costs. The problem is not money. It is that the technology under the institution has quietly aged into a single point of failure.
+  </p>
+  <div class="two-col">
+    <div class="card teal">
+      <h4>Strong foundations</h4>
+      <ul>
+        <li>$4.6B in assets and a loyal, long-horizon member base</li>
+        <li>Sticky deposits mean reliable returns and capacity for upfront investment</li>
+        <li>Deep community trust and a clear stewardship mission</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Underlying values to protect</h4>
+      <ul>
+        <li>Member trust and decisions made in members' interest</li>
+        <li>Community accountability beyond transactions</li>
+        <li>Responsible, conservative stewardship of member assets</li>
+        <li>Continuous improvement as a stated commitment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COMPLICATION -->
+<section class="block">
+  <div class="block-eyebrow">Complication</div>
+  <h2>APEX-7 is a clock running down</h2>
+  <p class="intro">
+    The core banking system, APEX-7, was installed in 1991 and has had no active development since. It is batch-only, processing roughly 420,000 transactions overnight, and 700 staff across 22 branches depend on it for everything. The risk is concentrated, regulatory, and competitive all at once.
+  </p>
+  <div class="two-col">
+    <div class="card">
+      <h4>Operational and regulatory risk</h4>
+      <ul>
+        <li>$4.9M/yr maintenance, rising 12% annually toward a projected $8.7M by year 6</li>
+        <li>Only 4 COBOL developers maintain 2.7M lines of code, one retirement from a crisis</li>
+        <li>26 security vulnerabilities, 17 unresolved, with a BCFSA review in 12 to 18 months</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>The competitive bleed</h4>
+      <ul>
+        <li>No Real-Time Rail, so members use fintechs for instant transfers</li>
+        <li>Mobile app rated 2.3 out of 5, members under 45 drifting away</li>
+        <li>HPCU keeps the mortgage but loses the daily touchpoints that build loyalty</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- KEY QUESTION -->
+<div class="kq">
+  <div class="kq-inner">
+    <div class="kq-label">The Key Question</div>
+    <p>How should Harbour Pacific Credit Union modernize its core banking system, without losing operational stability, regulatory standing, or member trust?</p>
+  </div>
+</div>
+
+<!-- ANALYSIS -->
+<section class="block">
+  <div class="block-eyebrow">Analysis</div>
+  <h2>Three paths, one credible answer</h2>
+  <p class="intro">
+    We weighed the status quo against a full core replacement and a slower phased approach across the criteria the board and the regulator actually care about: regulatory credibility, the legacy support cliff, long-term cost, and member impact. Only a full migration resolves the risk instead of deferring it.
+  </p>
+  <div class="matrix-wrap">
+    <table class="matrix">
+      <thead>
+        <tr><th>Path</th><th>Regulatory</th><th>Legacy support</th><th>Long-term cost</th><th>Member impact</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="opt">Sustain APEX-7</td>
+          <td>No credible response to BCFSA review</td>
+          <td>Ends with one developer retirement</td>
+          <td>Grows to ~$8.7M/yr by year 6</td>
+          <td>App stays at 2.3 stars, no Real-Time Rail</td>
+        </tr>
+        <tr class="rec">
+          <td class="opt">Full CBS shift<span class="rec-tag">Chosen</span></td>
+          <td>Credible plan regulators can accept</td>
+          <td>COBOL eliminated on completion</td>
+          <td>30 to 40% reduction over 10 years</td>
+          <td>Full rebuild: Real-Time Rail, modern app</td>
+        </tr>
+        <tr>
+          <td class="opt">Phased modernization</td>
+          <td>Risk window stays open 5+ years</td>
+          <td>COBOL persists, never resolved</td>
+          <td>15 to 25% reduction over 10 years</td>
+          <td>Incremental only, no competitive parity</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight">
+    <strong>Analyst read:</strong> Phasing feels safer but keeps the most dangerous asset alive. A full shift is the only path that both satisfies the regulator and ends the talent-concentration risk.
+  </div>
+</section>
+
+<!-- VENDOR -->
+<section class="block">
+  <div class="block-eyebrow">Vendor Selection</div>
+  <h2>Meridian CoReady fits the values, not just the spec</h2>
+  <p class="intro">
+    Three vendors could technically do the migration. The deciding factors were Real-Time Rail readiness, BC migration track record, and where member data physically lives, the last point being central to a credit union built on community trust.
+  </p>
+  <div class="matrix-wrap">
+    <table class="matrix">
+      <thead>
+        <tr><th>Vendor</th><th>Track record</th><th>Real-Time Rail</th><th>Data location</th></tr>
+      </thead>
+      <tbody>
+        <tr class="rec">
+          <td class="opt">Meridian CoReady<span class="rec-tag">Chosen</span></td>
+          <td>16 years, 9 migrations, 2 in BC</td>
+          <td>Certified, can launch day 1</td>
+          <td>Hybrid cloud, Canadian-owned, Toronto HQ</td>
+        </tr>
+        <tr>
+          <td class="opt">NorthAxis Apex Next</td>
+          <td>6 years, 3 migrations, 1 in BC</td>
+          <td>Certified, can launch day 1</td>
+          <td>US HQ, data fully stored in US</td>
+        </tr>
+        <tr>
+          <td class="opt">Continuum FoundationOS</td>
+          <td>14 years, 11 CU clients, 7 in BC</td>
+          <td>Not certified, roadmap only</td>
+          <td>Vancouver HQ, fully Canadian</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="insight teal">
+    <strong>Analyst read:</strong> Meridian is the only option that pairs day-one Real-Time Rail with Canadian data residency and a proven BC migration record, and it aligns with OSFI B-10 expectations.
+  </div>
+</section>
+
+<!-- RECOMMENDATION -->
+<section class="block">
+  <div class="block-eyebrow">Recommendation</div>
+  <h2>The Triple R strategy</h2>
+  <p class="intro">
+    Rebuild the core, reclaim the daily relationship, and reinforce trust. The three moves work together: modern infrastructure is wasted if staff resist it, members do not feel it, and the board cannot govern it.
+  </p>
+  <div class="reco-grid">
+    <div class="reco-card">
+      <div class="reco-num">Rebuild</div>
+      <h4>A dual-mode core</h4>
+      <p>Migrate to Meridian and give staff a choice of interface: Core Mode mirrors the familiar APEX-7 workflow for tenured employees, while Smart Mode offers real-time dashboards and AI nudges. Both run through one governed API layer, so Meridian stays the single source of truth with no duplicated data. It removes the COBOL dependency while preserving institutional knowledge.</p>
+    </div>
+    <div class="reco-card">
+      <div class="reco-num">Reclaim</div>
+      <h4>Beacon, the member app</h4>
+      <p>A real-time, multilingual mobile app that replaces the 2.3-star experience: instant balance updates, unified internal and external transfers, and remittance support for newcomer segments. The goal is to win back the high-frequency daily transactions that build loyalty and reposition HPCU as the member's primary bank, not a secondary one.</p>
+    </div>
+    <div class="reco-card">
+      <div class="reco-num">Reinforce</div>
+      <h4>A Digital Governance Officer</h4>
+      <p>A new internal executive role that acts as the liaison between the board and the technology team: governing AI boundaries, overseeing migration phase gates, enforcing lifecycle policy, and coordinating regulator communications. An annual Internal Tech Health Assessment keeps governance ahead of regulatory change.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACT -->
+<div class="takeaways">
+  <div class="takeaways-inner">
+    <div class="block-eyebrow">Impact</div>
+    <h2 style="font-family:var(--serif);font-size:clamp(24px,3.5vw,32px);">What the plan delivers</h2>
+    <div class="tk-grid">
+      <div class="tk-card">
+        <div class="tk-num">30 to 40%</div>
+        <h4>Lower operating cost</h4>
+        <p>Permanent reduction in OpEx over ten years, reversing the 12% annual maintenance climb.</p>
+      </div>
+      <div class="tk-card teal">
+        <div class="tk-num">Day 1</div>
+        <h4>Real-Time Rail</h4>
+        <p>Instant transfers and a modern app, closing the gap that pushed members to fintechs.</p>
+      </div>
+      <div class="tk-card purple">
+        <div class="tk-num">0</div>
+        <h4>COBOL dependency</h4>
+        <p>Talent-concentration and security risk resolved, with a credible story for the BCFSA.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RISKS -->
+<section class="block">
+  <div class="block-eyebrow">Risk &amp; Mitigation</div>
+  <h2>Where it could break, and the plan B</h2>
+  <div style="margin-top:1.25rem;">
+    <div class="risk">
+      <div class="r-head"><span>Risk</span>Long-tenured staff feel uncertain or undervalued during modernization</div>
+      <div class="r-mit"><span>Mitigation</span>One-on-one check-ins and a deliberate, well-informed onboarding process</div>
+    </div>
+    <div class="risk">
+      <div class="r-head"><span>Risk</span>Core modernization runs longer or costs more than planned</div>
+      <div class="r-mit"><span>Mitigation</span>Phase-gated funding tied strictly to milestone completion</div>
+    </div>
+    <div class="risk">
+      <div class="r-head"><span>Risk</span>Low adoption of the new Beacon app among existing members</div>
+      <div class="r-mit"><span>Mitigation</span>Transaction fee waivers and loyalty incentives tied to early usage</div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<div class="method">
+  <h3>About this case</h3>
+  <p>Prepared for the TechStrat 2026 final round. Harbour Pacific Credit Union is a fictional institution created for the competition; figures come from the case brief. Regulatory framing references the OSFI B-10 technology and cyber risk guideline and Payments Canada Real-Time Rail standards. Per the competition disclosure, some deck visuals and branding for the fictional company were AI-assisted; the strategy and analysis are the team's own.</p>
+  <ul>
+    <li>Company and stakeholder analysis</li>
+    <li>Technical gap assessment</li>
+    <li>Decision matrices</li>
+    <li>Vendor selection</li>
+    <li>Migration roadmap</li>
+    <li>Governance design</li>
+  </ul>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <p>Case study by <a href="index.html">Carter Jaquette</a></p>
+    <div class="footer-links">
+      <a href="index.html#case-studies">More case studies</a>
+      <a href="https://www.linkedin.com/in/carterjaquette/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
